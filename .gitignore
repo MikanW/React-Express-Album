@@ -25,3 +25,6 @@ yarn-error.log*
 
 #db config file
 db.js
+
+#macOS system file
+**/.DS_Store

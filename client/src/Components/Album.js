@@ -22,19 +22,20 @@ function Album() {
   console.log(apiResponse);
 
   return (
-    <div>
+    <div className='WrapAlbum'>
       {/* <Box sx={{ width: 500, height: 450, overflowY: 'scroll' }}> */}
-      <Box>
+      <Box className='Album'>
         <ImageList variant="masonry" cols={3} gap={8}>
           {apiResponse.map((item) => (
-            <ImageListItem key={item._id}>
+            <ImageListItem key={item._id} className='PhotoCard'>
               <img
+                className='Photo'
                 srcSet={`${item.url}?w=248&fit=crop&auto=format&dpr=2 2x`}
                 src={`${item.url}?w=248&fit=crop&auto=format`}
-                alt={item.tags + item.location}
+                alt={item.tags + ", " + item.location + ", "}
                 loading="lazy"
               />
-              <ImageListItemBar position="below" title={item.author} />
+              <ImageListItemBar position="below" title={item.tags + " " + item.location + " " + item.kudos + "❤️"} />
             </ImageListItem>
           ))}
         </ImageList>
