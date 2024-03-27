@@ -34,39 +34,14 @@ function Album() {
 
   return (
     <div className='WrapAlbum'>
-      {/* <Box sx={{ width: 500, height: 450, overflowY: 'scroll' }}> */}
       <Box className='Album'>
-        <ImageList variant="masonry" cols={3} gap={8}>
+        <ImageList variant="masonry" cols={4} gap={10}>
           {apiResponse.map((item) => (
-            // <ImageListItem key={item._id} className='PhotoCard'>
-            //   <img
-            //     className='Photo'
-            //     srcSet={`${item.url}?w=248&fit=crop&auto=format&dpr=2 2x`}
-            //     src={`${item.url}?w=248&fit=crop&auto=format`}
-            //     alt={item.tags + ", " + item.location + ", "}
-            //     loading="lazy"
-            //   />
-            //   <ImageListItemBar
-            //     position="below"
-            //     title={item.tags + " " + item.location}
-            //     actionIcon={
-            //       <IconButton className='KudoButton'
-            //         sx={{ color: kudoColor }}
-            //         aria-label={`Left Kudos for ${item.title}`}
-            //         onClick={onKudoClick}
-            //       >
-            //         <FavoriteIcon />
-            //         <p>{item.kudos}</p>
-            //       </IconButton>
-            //     }
-            //   />
-            // </ImageListItem>
             <Photo
               key={item._id}
               item={item}
             />
           ))}
-
         </ImageList>
       </Box>
     </div>

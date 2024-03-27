@@ -28,7 +28,7 @@ function Photo(props) {
       />
       <ImageListItemBar
         position="below"
-        title={props.item.tags + " " + props.item.location}
+        title={"#" + props.item.tags + "    @" + props.item.location}
         actionIcon={
           <IconButton className='KudoButton'
             sx={{ color: kudoColor }}
