@@ -9,7 +9,7 @@ Working on it!
 - DB: MongoDB Cloud, Saving info and urls of all photos of the Album.
 
 It's now like this:
-![preview_now](info/preview_now.png)
+![preview](info/preview.png)
 
 But eventually I hope it would be like Pinteres* or something.
 
