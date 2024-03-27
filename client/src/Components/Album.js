@@ -3,6 +3,8 @@ import Box from '@mui/material/Box';
 import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
 import ImageListItemBar from '@mui/material/ImageListItemBar';
+import IconButton from '@mui/material/IconButton';
+import FavoriteIcon from '@mui/icons-material/Favorite';
 import axios from 'axios';
 
 
@@ -35,7 +37,19 @@ function Album() {
                 alt={item.tags + ", " + item.location + ", "}
                 loading="lazy"
               />
-              <ImageListItemBar position="below" title={item.tags + " " + item.location + " " + item.kudos + "❤️"} />
+              <ImageListItemBar
+                position="below"
+                title={item.tags + " " + item.location}
+                actionIcon={
+                  <IconButton className='KudoButton'
+                    sx={{ color: 'rgba(166, 24, 24, 0.143)' }}
+                    aria-label={`Left Kudos for ${item.title}`}
+                  >
+                    <p>{item.kudos}</p>
+                    <FavoriteIcon />
+                  </IconButton>
+                }
+              />
             </ImageListItem>
           ))}
         </ImageList>

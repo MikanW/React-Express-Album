@@ -52,7 +52,7 @@ module.exports = {
 - search photos with tag or location
 - download photos of original size 
 - upload new photos and save its data into DB.
-- other functions incoming...
+- other features incoming...
 - styling
 
 ### Done
