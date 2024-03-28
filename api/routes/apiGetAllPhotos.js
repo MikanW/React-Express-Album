@@ -10,16 +10,11 @@ async function getPhotos() {
 
   try {
     await client.connect();
-    // Get the database and collection on which to run the operation
     const db = client.db("photos");
     const col = db.collection("photo");
-
-    // Get the database and collection on which to run the operation
     const cursor = col.find({});
 
-    // Find the document
     allPhotos = await cursor.toArray();
-    // Print results
   } catch (err) {
     console.log(err.stack);
   } finally {

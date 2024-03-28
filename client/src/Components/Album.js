@@ -13,6 +13,9 @@ function Album() {
       axios.get('http://localhost:9000/apiGetAllPhotos')
         .then(response => {
           setApiResponse(Object.values(response.data));
+        })
+        .catch(function (error) {
+          console.log(error);
         });
     };
     callAPI();
