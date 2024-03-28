@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var mongoDB = require("./../db.js");
+var mongoDB = require("../db.js");
 const { MongoClient } = require("mongodb");
 
 const client = new MongoClient(mongoDB.uri);
