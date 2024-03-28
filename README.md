@@ -48,7 +48,6 @@ module.exports = {
 ## RoadMap
 
 ### Todo
-- kudo(like) button and save realtime data into DB
 - search photos with tag or location
 - download photos of original size 
 - upload new photos and save its data into DB.
@@ -61,3 +60,4 @@ module.exports = {
 - fetch photos' data from frontend
 - display photos with *simplest* Masonry Layout
 - display info of each photo
+- kudo(like) button and save realtime data into DB
