@@ -35,10 +35,11 @@ function Photo(props) {
         alt={props.item.tags + ", " + props.item.location + ", "}
         loading="lazy"
       />
-      <ImageListItemBar
-        position="below"
-        title={"#" + props.item.tags + "    @" + props.item.location}
-        actionIcon={
+      <div className='PhotoInfo'>
+        <div>
+          <p># {props.item.tags}  @ {props.item.location}</p>
+        </div>
+        <div className='WrapKudoButton'>
           <IconButton className='KudoButton'
             sx={{ color: kudoColor }}
             aria-label={`Left Kudos for ${props.item.title}`}
@@ -47,8 +48,8 @@ function Photo(props) {
             <FavoriteIcon />
             <p>{kudoCount}</p>
           </IconButton>
-        }
-      />
+        </div>
+      </div>
     </ImageListItem>
   );
 }
