@@ -11,10 +11,6 @@ var fs = require('fs');
 const imgurToken = require('../db.js').imgurToken;
 const albumId = require('../db.js').albumId;
 
-
-
-
-
 const uploadToImgur = async (data) => {
   var url = '';
 
