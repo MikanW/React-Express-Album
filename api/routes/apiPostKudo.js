@@ -8,7 +8,6 @@ const client = new MongoClient(mongoDB.uri);
 
 async function pushKudo(photoId) {
   var newKudoCount = (await getCurrentKudos(photoId) + 1).toString();
-  console.log(newKudoCount);
 
   try {
     await client.connect();
