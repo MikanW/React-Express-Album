@@ -3,6 +3,8 @@ import Box from '@mui/material/Box';
 import ImageList from '@mui/material/ImageList';
 import axios from 'axios';
 import Photo from './Photo';
+import FileUpload from './FileUpload';
+import ToolBar from './ToolBar';
 
 
 function Album() {
@@ -21,8 +23,14 @@ function Album() {
     callAPI();
   }, []);
 
+  const fileUploadCallBack = (files) => {
+    console.log(files);
+  }
+
   return (
     <div className='WrapAlbum'>
+      <ToolBar />
+      <FileUpload accept="image/*" multiple={true} updateFilesCb={fileUploadCallBack} />
       <Box className='Album'>
         <ImageList variant="masonry" cols={4} gap={10}>
           {apiResponse.map((item) => (

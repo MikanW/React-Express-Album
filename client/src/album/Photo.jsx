@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import ImageListItem from '@mui/material/ImageListItem';
-import ImageListItemBar from '@mui/material/ImageListItemBar';
 import IconButton from '@mui/material/IconButton';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 
@@ -40,12 +39,13 @@ function Photo(props) {
           <p># {props.item.tags}  @ {props.item.location}</p>
         </div>
         <div className='WrapKudoButton'>
-          <IconButton className='KudoButton'
+          <IconButton
+            className='KudoButton'
             sx={{ color: kudoColor }}
             aria-label={`Left Kudos for ${props.item.title}`}
             onClick={onKudoClick}
           >
-            <FavoriteIcon />
+            <FavoriteIcon fontSize="xs" />
             <p>{kudoCount}</p>
           </IconButton>
         </div>
