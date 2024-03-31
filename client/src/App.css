@@ -16,7 +16,7 @@
 
 .Header {
   display: flex;
-  height: 10vh;
+  height: 8vh;
   align-items: center;
   padding-right: 2rem;
   background-color: #1f1f1f;
@@ -36,19 +36,21 @@ ul {
   display: flex;
   height: 100%;
   align-items: center;
+  justify-content: space-between;
 }
 
 nav ul li {
+  display: flex;
+  height: 100%;
   list-style: none;
-  padding: 0;
+  border-radius: 5%;
   align-items: center;
   text-align: center;
   padding-left: 2rem;
   padding-right: 2rem;
-  border-radius: 5%;
 }
 
-ul li :hover {
+nav ul li:hover {
   background-color: #a8a8a8;
 }
 
@@ -86,10 +88,6 @@ ul li a {
   font-weight: 400;
   font-style: normal;
   justify-content: space-between;
-}
-
-.WrapKudoButton {
-  width: 20%;
 }
 
 .KudoButton {
