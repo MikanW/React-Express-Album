@@ -43,7 +43,7 @@ nav ul li {
   display: flex;
   height: 100%;
   list-style: none;
-  border-radius: 5%;
+  border-radius: 1rem;
   align-items: center;
   text-align: center;
   padding-left: 2rem;
@@ -62,7 +62,8 @@ ul li a {
 }
 
 .WrapAlbum {
-  margin: 1rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
 }
 
 .PhotoCard {
@@ -92,4 +93,25 @@ ul li a {
 
 .KudoButton {
   color: rgba(177, 36, 36, 0.734);
+}
+
+.ToolBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  height: 6vh;
+  margin: 1rem;
+}
+
+.WrapAddPhoto {
+  height: 100%;
+  width: 10dvw;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  border-radius: 5px;
+}
+
+.WrapAddPhoto:hover {
+  background-color: #ffffff;
 }

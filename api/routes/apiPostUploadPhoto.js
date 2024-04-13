@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var mongoDB = require("../db.js");
+const multer = require('multer');
 var ObjectId = require('mongodb').ObjectId;
 const { MongoClient } = require("mongodb");
 const client = new MongoClient(mongoDB.uri);
@@ -10,10 +11,13 @@ var FormData = require('form-data');
 var fs = require('fs');
 const imgurToken = require('../db.js').imgurToken;
 const albumId = require('../db.js').albumId;
+const path = require('path');
 
+const uploadDir = path.join(__dirname, 'uploads');
 
-
-
+if (!fs.existsSync(uploadDir)) {
+  fs.mkdirSync(uploadDir, { recursive: true });
+}
 
 const uploadToImgur = async (data) => {
   var url = '';
@@ -57,16 +61,53 @@ const insertImageToDB = async (url, tags, location) => {
   console.log(ret);
 }
 
-const testAPI = async () => {
-  var testData = new FormData();
-  testData.append('image', fs.createReadStream('/Users/mikan/Downloads/IMG_9244.jpg'));
-  testData.append('type', 'image');
-  testData.append('album', albumId);
+const handleUpload = async (files, tags, locations) => {
 
-  var imgurUrl = await uploadToImgur(testData);
-  console.log(imgurUrl);
-  if (imgurUrl !== null && imgurUrl.trim() !== "") {
-    await insertImageToDB(imgurUrl, "植物", "FuXin");
-  }
+  await Promise.all(files.map(async (file, index) => {
+    const formData = new FormData();
+    formData.append('image', fs.createReadStream(file.path), file.originalname);
+    formData.append('type', 'image');
+    formData.append('album', albumId);
+
+    var imgurUrl = await uploadToImgur(formData);
+    if (imgurUrl !== null && imgurUrl.trim() !== "") {
+      fs.unlinkSync(file.path);
+      await insertImageToDB(imgurUrl, locations[index], tags[index]);
+    }
+  }));
+
 }
 
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, uploadDir);
+  },
+  filename: function (req, file, cb) {
+    cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname));
+  }
+});
+
+const upload = multer({ storage: storage });
+
+router.post('/', upload.array('files'), async (req, res) => {
+  const files = req.files;
+  console.log(files);
+
+  if (!files || files.length === 0) {
+    return res.status(400).send({ message: 'No files uploaded.' });
+  }
+
+  try {
+    await handleUpload(req.files, req.body.tags, req.body.locations);
+    res.send({ message: 'All photos uploaded!' });
+  } catch (error) {
+    console.error('Error forwarding files:', error);
+    files.forEach(file => {
+      fs.unlinkSync(file.path);
+    });
+    res.status(500).send({ message: 'Error forwarding files' });
+  }
+});
+
+
+module.exports = router;
