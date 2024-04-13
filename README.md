@@ -11,6 +11,10 @@ Working on it!
 It's now like this:
 ![preview](info/preview.png)
 
+And this:
+
+![previewUploadNewPhotos](info/PreviewUpload.png)
+
 But eventually I hope it would be like Pinteres* or something.
 
 Working on it!
@@ -48,11 +52,14 @@ module.exports = {
 ## RoadMap
 
 ### Todo
-- search photos with tag or location
+- auth (or maybe user login?) when uploading new photos
 - download photos of original size 
-- upload new photos and save its data into DB.
 - other features incoming...
 - styling
+
+### Working on it
+
+- search photos with tag or location
 
 ### Done
 - MongoDB Cloud setup
@@ -61,3 +68,8 @@ module.exports = {
 - display photos with *simplest* Masonry Layout
 - display info of each photo
 - kudo(like) button and save realtime data into DB
+- upload new photos and save its data into DB.
+  - Drag and Drop && click file uploader at frontend
+  - Preview of photos to upload
+  - Edit tag and location of photos to upload
+  - upload and save to DB

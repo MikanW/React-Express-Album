@@ -1,0 +1,18 @@
+/* EditableLabel.css */
+.editable-container {
+  height: 35px;
+  box-sizing: border-box;
+}
+
+.editable-text {
+  cursor: pointer;
+  padding: 4px 0;
+  color: rgba(255, 255, 255, 0.555);
+}
+
+.editable-input {
+  padding: 5px 0;
+  border: none;
+  background: none;
+  box-shadow: none;
+}

@@ -1,22 +1,23 @@
 import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate';
+import FileUpload from './PhotoUploader/FileUpload';
+import BtnModalFileUpload from './PhotoUploader/BtnModalFileUpload';
+import { PhotoListProvider } from './PhotoUploader/PhotoListContext';
+
 
 const ToolBar = () => {
-  const setModal = () => {
 
-  };
   return (
-    <div className="ToolBar">
-      <div>
-        Search
+    <>
+      <div className="ToolBar">
+        <div>
+          Search
+        </div>
+        <PhotoListProvider>
+          <BtnModalFileUpload />
+        </PhotoListProvider>
+
       </div>
-      <div
-        style={{ cursor: 'pointer' }}
-        className='WrapAddPhoto'
-        onClick={setModal}>
-        <AddPhotoAlternateIcon />
-        <span >AddNew</span>
-      </div>
-    </div>
+    </>
   )
 }
 

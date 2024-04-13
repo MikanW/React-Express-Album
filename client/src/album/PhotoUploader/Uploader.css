@@ -1,0 +1,19 @@
+.WrapRemoveBtn {
+  display: flex;
+  align-content: flex-end;
+  width: 100%;
+}
+
+img {
+  object-fit: cover;
+  object-position: center;
+}
+
+.WrapEditMeta {
+  margin-top: 1rem;
+}
+
+.WrapEditWithIconLine {
+  display: flex;
+  align-items: center;
+}

@@ -9,6 +9,7 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var apiGetAllPhotos = require("./routes/apiGetAllPhotos");
 var apiPostKudo = require("./routes/apiPostKudo");
+var apiPostUploadPhoto = require("./routes/apiPostUploadPhoto");
 
 var app = express();
 
@@ -22,11 +23,13 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use('/routes/uploads', express.static('uploads'));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use("/apiGetAllPhotos", apiGetAllPhotos);
 app.use('/apiPostKudo', apiPostKudo);
+app.use('/apiPostUploadPhoto', apiPostUploadPhoto);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
