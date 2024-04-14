@@ -59,11 +59,6 @@ const BtnModalFileUpload = () => {
         formData.append('locations', photo.location);
       });
 
-      photos.forEach((photo) => {
-        formData.append('tags', photo.tag);
-      });
-
-
       fetch('http://localhost:9000/apiPostUploadPhoto', {
         method: 'POST',
         body: formData,

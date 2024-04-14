@@ -61,22 +61,18 @@ const insertImageToDB = async (url, tags, location) => {
   console.log(ret);
 }
 
-const handleUpload = async (files, tags, locations) => {
+const handleUpload = async (file, tag, location) => {
+  const formData = new FormData();
+  formData.append('image', fs.createReadStream(file.path), file.originalname);
+  formData.append('type', 'image');
+  formData.append('album', albumId);
 
-  await Promise.all(files.map(async (file, index) => {
-    const formData = new FormData();
-    formData.append('image', fs.createReadStream(file.path), file.originalname);
-    formData.append('type', 'image');
-    formData.append('album', albumId);
-
-    var imgurUrl = await uploadToImgur(formData);
-    if (imgurUrl !== null && imgurUrl.trim() !== "") {
-      fs.unlinkSync(file.path);
-      await insertImageToDB(imgurUrl, locations[index], tags[index]);
-    }
-  }));
-
-}
+  var imgurUrl = await uploadToImgur(formData);
+  if (imgurUrl !== null && imgurUrl.trim() !== "") {
+    fs.unlinkSync(file.path);
+    await insertImageToDB(imgurUrl, tag, location);
+  }
+};
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -90,15 +86,21 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 
 router.post('/', upload.array('files'), async (req, res) => {
-  const files = req.files;
-  console.log(files);
 
+  const files = req.files;
   if (!files || files.length === 0) {
     return res.status(400).send({ message: 'No files uploaded.' });
   }
 
   try {
-    await handleUpload(req.files, req.body.tags, req.body.locations);
+    if (files.length === 1) {
+      await handleUpload(files[0], req.body.tags, req.body.locations);
+    }
+    else {
+      await Promise.all(files.map(async (file, index) => {
+        handleUpload(file, req.body.tags[index], req.body.locations[index]);
+      }));
+    }
     res.send({ message: 'All photos uploaded!' });
   } catch (error) {
     console.error('Error forwarding files:', error);
