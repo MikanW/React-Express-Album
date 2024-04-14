@@ -16,7 +16,6 @@ function EditableLabel({ initialText, onBlurCb }) {
   };
 
   const handleBlur = () => {
-    console.log("handleBlur:" + text);
     onBlurCb(text);
     setIsEditing(false);
   };

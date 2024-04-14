@@ -1,10 +1,13 @@
 .App {
   text-align: center;
-  height: 100%;
+  height: 100vh;
+  padding: 0;
+  margin: 0;
   font-family: "Zen Kaku Gothic Antique", sans-serif;
   font-weight: 400;
   font-style: normal;
   background-color: #a8a8a8;
+  box-sizing: border-box;
 }
 
 
@@ -15,11 +18,17 @@
 }
 
 .Header {
+  position: relative;
   display: flex;
   height: 8vh;
   align-items: center;
   padding-right: 2rem;
   background-color: #1f1f1f;
+  z-index: 99;
+}
+
+.Main {
+  height: 92vh;
 }
 
 .AppNav {
@@ -31,7 +40,7 @@
   align-items: center;
 }
 
-ul {
+.NavList {
   margin: 0;
   display: flex;
   height: 100%;
@@ -39,7 +48,7 @@ ul {
   justify-content: space-between;
 }
 
-nav ul li {
+.NavItem {
   display: flex;
   height: 100%;
   list-style: none;
@@ -50,7 +59,7 @@ nav ul li {
   padding-right: 2rem;
 }
 
-nav ul li:hover {
+.NavItem:hover {
   background-color: #a8a8a8;
 }
 
