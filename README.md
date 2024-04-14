@@ -73,3 +73,4 @@ module.exports = {
   - Preview of photos to upload
   - Edit tag and location of photos to upload
   - upload and save to DB
+- homepage with full-screen slideShow
