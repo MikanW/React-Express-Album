@@ -9,6 +9,11 @@ Working on it!
 - DB: MongoDB Cloud, Saving info and urls of all photos of the Album.
 
 It's now like this:
+
+![previewHome](info/PreviewHome.png)
+
+And this:
+
 ![preview](info/preview.png)
 
 And this:
